@@ -2,7 +2,7 @@ package com.gubo.tableorganiser.ui.state
 
 import androidx.compose.runtime.mutableStateOf
 
-class PersonFormState(
+class ItemFormState(
     initialName: String,
     initialPros: List<String>,
     initialCons: List<String>

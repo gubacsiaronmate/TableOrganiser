@@ -14,14 +14,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.gubo.tableorganiser.model.Person
+import com.gubo.tableorganiser.model.Item
 import com.gubo.tableorganiser.ui.components.Table
 import io.objectbox.Box
-import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable fun TableScreen(
     navController: NavHostController,
-    box: Box<Person>,
+    box: Box<Item>,
 ) {
     Scaffold (modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) { paddingValues ->
         Box(
@@ -40,7 +39,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
             
             // selector (dropdown)
             var expanded by remember { mutableStateOf(false) }
-            var selectedPerson by remember { mutableStateOf<Person?>(null) }
+            var selectedItem by remember { mutableStateOf<Item?>(null) }
             Row(
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier.padding(vertical = 16.dp)
@@ -55,7 +54,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
                     box.all.forEach { person ->
                         DropdownMenuItem(
                             onClick = {
-                                selectedPerson = person
+                                selectedItem = person
                                 expanded = false
                             },
                             text = { Text(person.name) },
@@ -65,8 +64,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
             }
             
             // table
-            if (selectedPerson != null) {
-                Table(selectedPerson!!)
+            if (selectedItem != null) {
+                Table(selectedItem!!)
             }
         }
     }

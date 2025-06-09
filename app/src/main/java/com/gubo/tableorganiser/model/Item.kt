@@ -5,7 +5,7 @@ import io.objectbox.annotation.Id
 import kotlinx.serialization.Serializable
 
 @Serializable
-@Entity data class Person(
+@Entity data class Item(
     @Id val id: Long,
     val name: String,
     val pros: List<String>,

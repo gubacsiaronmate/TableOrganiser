@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.gubo.tableorganiser.model.ObjectBox
-import com.gubo.tableorganiser.model.Person
+import com.gubo.tableorganiser.model.Item
 import com.gubo.tableorganiser.ui.screens.SettingsScreen
 import com.gubo.tableorganiser.ui.screens.TableScreen
 import com.gubo.tableorganiser.ui.theme.TableOrganiserTheme
@@ -18,7 +18,7 @@ import io.objectbox.BoxStore
 
 class MainActivity : ComponentActivity() {
     private val store: BoxStore by lazy { ObjectBox.store }
-    val personBox: Box<Person> by lazy { ObjectBox.getPersonBox() }
+    val itemBox: Box<Item> by lazy { ObjectBox.getPersonBox() }
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +34,8 @@ class MainActivity : ComponentActivity() {
     @Composable fun AppNavHost() {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = "home") {
-            composable("home") { TableScreen(navController, personBox) }
-            composable("importJson") { SettingsScreen(personBox) }
+            composable("home") { TableScreen(navController, itemBox) }
+            composable("importJson") { SettingsScreen(itemBox) }
         }
     }
 }

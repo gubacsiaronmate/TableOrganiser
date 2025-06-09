@@ -11,18 +11,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.gubo.tableorganiser.model.Person
+import com.gubo.tableorganiser.model.Item
 import com.gubo.tableorganiser.ui.helper.ShapeModifier
-import com.gubo.tableorganiser.ui.state.PersonFormState
+import com.gubo.tableorganiser.ui.state.ItemFormState
 import io.objectbox.Box
 
-@Composable fun AddPerson(
-    box: Box<Person>
+@Composable fun AddItem(
+    box: Box<Item>
 ) {
     val isAddProDialogOpen = remember { mutableStateOf(false) }
     val isAddConDialogOpen = remember { mutableStateOf(false) }
-    val personState = rememberSaveable {
-        PersonFormState(
+    val itemState = rememberSaveable {
+        ItemFormState(
             initialName = "",
             initialPros = emptyList(),
             initialCons = emptyList(),
@@ -50,8 +50,8 @@ import io.objectbox.Box
             )
             
             OutlinedTextField(
-                value = personState.name,
-                onValueChange = { personState.updateName(it) },
+                value = itemState.name,
+                onValueChange = { itemState.updateName(it) },
                 label = { Text("Name") },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(),
@@ -69,8 +69,8 @@ import io.objectbox.Box
                         fontWeight = FontWeight.Bold,
                     )
                     
-                    if (personState.pros.isNotEmpty()) {
-                        personState.pros.forEach { pro ->
+                    if (itemState.pros.isNotEmpty()) {
+                        itemState.pros.forEach { pro ->
                             Container(
                                 data = pro,
                                 corner = ShapeModifier.ROUNDED,
@@ -93,8 +93,8 @@ import io.objectbox.Box
                         fontWeight = FontWeight.Bold,
                     )
                     
-                    if(personState.cons.isNotEmpty()) {
-                        personState.cons.forEach { con ->
+                    if(itemState.cons.isNotEmpty()) {
+                        itemState.cons.forEach { con ->
                             Container(
                                 data = con,
                                 corner = ShapeModifier.ROUNDED,

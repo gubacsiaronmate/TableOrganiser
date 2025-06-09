@@ -1,7 +1,6 @@
 package com.gubo.tableorganiser.ui.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,12 +13,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.gubo.tableorganiser.model.Person
+import com.gubo.tableorganiser.model.Item
 import io.objectbox.Box
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun SettingsScreen(
-    box: Box<Person>
+    box: Box<Item>
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),

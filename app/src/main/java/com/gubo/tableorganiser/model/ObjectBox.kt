@@ -8,16 +8,16 @@ object ObjectBox {
     lateinit var store: BoxStore
         private set
     
-    lateinit var personBox: Box<Person>
+    lateinit var itemBox: Box<Item>
     
     fun init(context: Context) {
         store = MyObjectBox.builder().androidContext(context).build()
     }
     
-    fun getPersonBox(): Box<Person> {
-        if (!this::personBox.isInitialized) {
-            personBox = store.boxFor(Person::class.java)
+    fun getPersonBox(): Box<Item> {
+        if (!this::itemBox.isInitialized) {
+            itemBox = store.boxFor(Item::class.java)
         }
-        return personBox
+        return itemBox
     }
 }
